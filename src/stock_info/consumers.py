@@ -19,6 +19,7 @@ class TimeSeriesConsumer(AsyncWebsocketConsumer):
         low = event['low']
         symbol = event['symbol']
         price = event['price']
+        exchange = event['exchange']
         
         # send message to front end
         await self.send(json.dumps({
@@ -29,5 +30,6 @@ class TimeSeriesConsumer(AsyncWebsocketConsumer):
             'low': low,
             'symbol': symbol,
             'price': price,
+            'exchange': exchange,
         }))
         

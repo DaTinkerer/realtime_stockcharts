@@ -12,23 +12,28 @@ channel_layer = get_channel_layer()
     
 @shared_task()
 def get_time_series_data ():
-    
+    # I'm gonna get the current entered stock symbol from the text file
     with open('stock_info/temp.txt', 'r+') as f:
         f.seek(0)
         sym = f.read()
         f.close
 
+        # Then make a request to the api
         payload = {'symbol': sym}
         r = requests.get(f'https://api.twelvedata.com/time_series?&interval=4h&apikey={api_key}&outputsize=500', 
         params=payload)
         
+        # Parse the data as json, set empty lists for each key value pair that I need
         res = r.json()
         symbol = res['meta']['symbol']
+        exchange = res['meta']['exchange']
         date = []
         open_price = []
         high = []
         close = []
         low = []
+        
+        # loop through the key value pairs and append it to the empty lists
         for value in res['values']:
             date.append(value['datetime'])
             open_price.append(value['open'])
@@ -37,7 +42,7 @@ def get_time_series_data ():
             low.append(value['low'])
 
     
-        
+        # query another url to get the current price
         r2 = requests.get(f'https://api.twelvedata.com/price?apikey={api_key}&dp=2', 
         params=payload)
         res2 = r2.json()
@@ -52,6 +57,7 @@ def get_time_series_data ():
         'low': low,
         'symbol': symbol,
         'price': price,
+        'exchange': exchange,
         })
 
      

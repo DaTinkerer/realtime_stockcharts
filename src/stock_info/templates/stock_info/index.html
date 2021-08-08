@@ -6,105 +6,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/info.css' %}">
     <script src="https://cdn.plot.ly/plotly-2.0.0-rc.3.min.js"></script>
    
     <title>Chart</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #e0e0eb;
-      }
-
-      div {
-        margin-left: auto;
-        margin-right: auto;
-        
-      }
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      
-    </style>
 </head>
 <body>
-
-  <div id="#resultid"></div>
-  
-  
-
-  
-  
 <div class="container">
- 
-  
   <div class="item" id="chart"></div>
 </div> 
-
-
-  <script>
-  
-  // get message from channels
-  const socket = new WebSocket('ws://localhost:8000/ws/time_series/');
-  socket.onmessage = function(event){
-
-    const data = JSON.parse(event.data);
-
-    const trace = {
-
-      x: data.date,
-      open: data.open,
-      high: data.high,
-      close: data.close,
-      low: data.low,
-
-      increasing: {
-        line: {color: '#99ccff'}
-      },
-      decreasing: {
-        line: {color: '#8c8c8c'},
-        
-        
-      },
-
-      type: 'candlestick',
-      xaxis: 'x',
-      yaxis: 'y',
-      
-    };
-
-    const d = [trace];
-    
-    const layout = {
-      title: {text: data.symbol + ' | ' + '$' + data.price},
-      yaxis: {title: 'Price (USD)'},
-      width: 1500,
-      height: 800,
-      dragmode: 'zoom',
-      showlegend: false,
-      xaxis: {
-        rangeslider: {
-		            visible: false
-	        },
-        title: 'Date',
-      },
-      plot_bgcolor: '#e0e0eb',
-      paper_bgcolor: '#e0e0eb',
-      
-    };
-    
-    Plotly.newPlot('chart', d, layout);
-    
-  
-  }
-  
-  
-
-  
-  </script>
-  
+  <script src="{% static 'js/info.js' %}" type="text/javascript"></script>
 </body>
 
 
