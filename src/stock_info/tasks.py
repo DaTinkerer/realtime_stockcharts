@@ -3,9 +3,6 @@ from celery import shared_task
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.core.files import File
-import plotly.graph_objects as go
-from plotly.offline import plot
-import pandas as pd
 import json
 from stockwatch.secrets import api_key
 channel_layer = get_channel_layer()

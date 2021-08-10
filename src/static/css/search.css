@@ -6,36 +6,36 @@ body {
   background: #414863;
 }
 
-.container {
+.cont {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 10em;
 }
 
-.container #sym-input {
+.cont #sym-input {
+  border-radius: 3em;
   padding: 1em;
   font-size: medium;
   border: #414863 solid 2px;
   width: 100%;
-  border-radius: 3em;
 }
 
-.container #sym-input:focus {
+.cont #sym-input:focus {
   outline: none;
   background: #DADADA;
   padding: 1em;
   transition-duration: .2s;
 }
 
-.container #sym-input:not(:focus) {
+.cont #sym-input:not(:focus) {
   outline: none;
   background: #fff;
   padding: .5em;
   transition-duration: .2s;
 }
 
-.container #sym-input label {
+.cont #sym-input label {
   color: #fff;
   margin-right: 1em;
 }

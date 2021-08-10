@@ -2,6 +2,8 @@
 const socket = new WebSocket('ws://localhost:8000/ws/time_series/');
 socket.onmessage = function(event){
 
+  // const data is the dictionary with
+  // all the channels messages
   const data = JSON.parse(event.data);
 
   const trace = {
@@ -41,6 +43,7 @@ socket.onmessage = function(event){
                   visible: false
           },
       title: 'Date',
+    
     },
     plot_bgcolor: '#414863',
     paper_bgcolor: '#414863',

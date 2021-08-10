@@ -4,7 +4,8 @@ const app = new Vue ({
     data: {
         userInput: '',
         datas: [],
-        symArray: [],
+        
+        
     },
 
     methods: {
@@ -13,7 +14,7 @@ const app = new Vue ({
             axios({
                 method: "GET",
                 url: `https://api.twelvedata.com/symbol_search?
-                apikey=XXXX6&outputsize=3&symbol=${this.userInput}`,
+                apikey=177206d91bf247f2a09d14ee8f4a4f16&outputsize=3&symbol=${this.userInput}`,
             }).then(response => {
                 this.datas = response.data.data
                 
@@ -38,3 +39,4 @@ const app = new Vue ({
 
 }
 })
+
