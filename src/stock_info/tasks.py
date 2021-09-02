@@ -5,15 +5,11 @@ from asgiref.sync import async_to_sync
 from django.core.files import File
 import json
 from stockwatch.secrets import api_key
+
 channel_layer = get_channel_layer()
     
 @shared_task()
-def get_time_series_data ():
-    # I'm gonna get the current entered stock symbol from the text file
-    with open('stock_info/temp.txt', 'r+') as f:
-        f.seek(0)
-        sym = f.read()
-        f.close
+def get_time_series_data (sym):
 
         # Then make a request to the api
         payload = {'symbol': sym}

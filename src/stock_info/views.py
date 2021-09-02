@@ -7,17 +7,17 @@ from .tasks import get_time_series_data
 def search (request):
     form = StockForm(request.POST or None)
     if form.is_valid():
-        sym = form.cleaned_data['stock_symbol']
+        
 
-        with open('stock_info/temp.txt', 'w') as f:
-            f.write(sym)
-        with open('stock_info/temp.txt', 'r+') as f:
-            f.seek(0)
-            symbol = f.read()
-            
-            f.close
+        sym = form.cleaned_data['stock_symbol']
+        request.session['sym'] = sym
+        s = request.session
+        print(s.session_key)
+        print(request.session['sym'])
+        print(request.user)
+
        
-        return redirect('/stocks/info/')
+        return redirect('/info/')
     context = {
         'form':form,
         
@@ -25,7 +25,9 @@ def search (request):
     return render(request, 'stock_info/search.html', context)
 
 def info (request):
-    get_time_series_data.delay()
+    sym = request.session['sym']
+    get_time_series_data.delay(sym)
+
    
     return render(request, 'stock_info/info.html')
 

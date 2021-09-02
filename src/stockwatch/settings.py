@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'celery_progress',
     'django_celery_results',
     'django_sass',
+    
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,8 @@ ASGI_APPLICATION = 'stockwatch.asgi.application'
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'django-db'
+
+# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 
 # Database

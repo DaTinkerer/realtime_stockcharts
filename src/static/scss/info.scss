@@ -1,31 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 body {
-    margin:0;
-    height: 100vh;
-    font-family: 'Lato', sans-serif;
-    background: #414863;
-    
+  margin: 0;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  background: #414863;
 }
 
-
-
 .container {
-    
-    max-width: 1350px;
-    
-    
-    margin: auto;
+  max-width: 1350px;
 
-    #chart {
-        display: block;
-        position: absolute;
-        width: 100%;
-        
-   
-        
+  margin: auto;
+
+  #chart {
+    display: block;
+    position: absolute;
+    width: 100%;
+  }
+  .spinner {
+    margin: auto;
+    margin-top: 5em;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #99ccff;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
-   
-    
-        
-        
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .message {
+    display: none;
+    color: #fff;
+    margin: auto;
+    margin-top: 5em;
+    width: 50%;
+    text-align: center;
+  }
 }

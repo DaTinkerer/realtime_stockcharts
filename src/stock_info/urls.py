@@ -3,7 +3,7 @@ from django.urls import path
 
 urlpatterns = [
     # path('', info),
-    path('search/', search),
+    path('', search),
     path('info/', info),
     
 ]
